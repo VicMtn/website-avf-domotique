@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useHead } from "@unhead/vue";
+import { usePageMeta } from "@/composables/usePageMeta";
 
-useHead({ title: "Page introuvable", meta: [{ name: "robots", content: "noindex" }] });
+usePageMeta({ title: "Page introuvable", noindex: true });
 </script>
 
 <template>

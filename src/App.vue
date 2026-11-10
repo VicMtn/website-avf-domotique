@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import { useHead } from "@unhead/vue";
+import { useHead, useSeoMeta } from "@unhead/vue";
 import AppHeader from "@/components/layout/AppHeader.vue";
 import AppFooter from "@/components/layout/AppFooter.vue";
 import { site } from "@/content/site";
 
-useHead({
-  titleTemplate: (title) => (title ? `${title} · ${site.name}` : `${site.name} · ${site.tagline}`),
-  htmlAttrs: { lang: "fr-CH", "data-theme": "avf" },
-  meta: [
-    { name: "description", content: site.description },
-    { property: "og:site_name", content: site.name },
-    { property: "og:type", content: "website" },
-    { property: "og:locale", content: "fr_CH" },
-  ],
+// Valeurs communes à toutes les pages ; titre, description et URL : usePageMeta() dans chaque page
+useHead({ htmlAttrs: { lang: "fr-CH", "data-theme": "avf" } });
+useSeoMeta({
+  ogSiteName: site.name,
+  ogType: "website",
+  ogLocale: "fr_CH",
+  ogImage: `${site.url}/og-image.jpg`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: `${site.name} : ${site.tagline}`,
+  twitterCard: "summary_large_image",
 });
 </script>
 

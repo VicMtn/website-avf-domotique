@@ -22,6 +22,8 @@ export const site = {
     country: "CH",
   },
   area: "Vaud, Valais, Genève",
+  /** Etoy (VD) */
+  geo: { lat: 46.485, lng: 6.42 },
 
   legal: {
     uid: "[CHE-000.000.000]",
@@ -31,6 +33,9 @@ export const site = {
     formService: "[Service d'envoi du formulaire]",
   },
 } as const;
+
+/** URL publique d'une route ; pages générées en dossiers (/mentions-legales/), d'où la barre finale */
+export const canonicalUrl = (path: string) => `${site.url}${path === "/" ? "/" : `${path.replace(/\/$/, "")}/`}`;
 
 export interface NavItem {
   label: string;

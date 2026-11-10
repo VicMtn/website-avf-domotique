@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { useHead } from "@unhead/vue";
+import { usePageMeta } from "@/composables/usePageMeta";
 import PageIntro from "@/components/ui/PageIntro.vue";
 import { site } from "@/content/site";
 
-useHead({ title: "Mentions légales", meta: [{ name: "robots", content: "noindex" }] });
+usePageMeta({
+  title: "Mentions légales",
+  description: `Mentions légales du site ${site.url.replace("https://", "")} : éditeur, hébergement, marques.`,
+  noindex: true,
+});
 </script>
 
 <template>

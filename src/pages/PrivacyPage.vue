@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { useHead } from "@unhead/vue";
+import { usePageMeta } from "@/composables/usePageMeta";
 import PageIntro from "@/components/ui/PageIntro.vue";
 import { site } from "@/content/site";
 
-useHead({ title: "Politique de confidentialité" });
+usePageMeta({
+  title: "Politique de confidentialité",
+  description: `Comment ${site.legalName} traite vos données personnelles, conformément à la nLPD.`,
+});
 </script>
 
 <template>
