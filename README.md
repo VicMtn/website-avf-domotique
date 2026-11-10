@@ -28,3 +28,13 @@ npm test           # tests unitaires (Vitest)
 
 Envoyer **le contenu** de `dist/` à la racine du domaine, y compris le fichier caché `.htaccess`.
 Chaque page est générée en HTML (`/mentions-legales/index.html`…), la 404 sous `/404/`.
+
+## Formulaire de contact
+
+L'envoi est isolé dans `src/services/contact.ts`. Copier `.env.example` en `.env.local` et renseigner :
+
+- `VITE_CONTACT_ENDPOINT` : URL qui reçoit un `POST` multipart (script PHP chez l'hébergeur, Formspree, Web3Forms…)
+- `VITE_CONTACT_ACCESS_KEY` : facultatif (Web3Forms)
+
+Sans adresse : envoi simulé en développement ; en production, le formulaire affiche une erreur et propose l'e-mail direct.
+Penser à citer le service retenu dans `site.legal.formService` (politique de confidentialité).

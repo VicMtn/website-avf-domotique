@@ -3,6 +3,7 @@ import { computed, reactive } from "vue";
 import SectionHeader from "@/components/ui/SectionHeader.vue";
 import { cta } from "@/content/site";
 import { estimateSavings, formatChf, type Answers } from "@/composables/savings";
+import { contactDraft } from "@/composables/contactDraft";
 
 interface Question<K extends keyof Answers = keyof Answers> {
   key: K;
@@ -42,6 +43,14 @@ const questions: Question[] = [
 
 const answers = reactive<Answers>({ home: "villa", solar: "oui", car: "oui" });
 const result = computed(() => estimateSavings(answers));
+
+/** Reporte les réponses dans le message du formulaire de contact */
+function requestEstimate() {
+  const summary = questions
+    .map((q) => `${q.label.replace(/[ …?]+$/, "")} : ${q.options.find((o) => o.value === answers[q.key])?.label}`)
+    .join(" ; ");
+  contactDraft.context = `Estimation en ligne (${formatChf(result.value.total)} par an). ${summary}.`;
+}
 </script>
 
 <template>
@@ -96,7 +105,7 @@ const result = computed(() => estimateSavings(answers));
             Ordre de grandeur prudent pour un foyer en Suisse romande, sur la base de 0,30 CHF/kWh. Le chiffrage exact se
             fait chez vous, avec vos factures.
           </p>
-          <RouterLink :to="cta.to" class="btn btn-primary mt-6 px-6">Recevoir mon estimation précise</RouterLink>
+          <RouterLink :to="cta.to" class="btn btn-primary mt-6 px-6" @click="requestEstimate">Recevoir mon estimation précise</RouterLink>
         </div>
       </div>
     </div>

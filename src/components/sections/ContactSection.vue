@@ -1,39 +1,38 @@
 <script setup lang="ts">
+import ContactForm from "@/components/contact/ContactForm.vue";
 import { site } from "@/content/site";
+
+const coords = [
+  { label: "Téléphone", value: site.phone.display, href: site.phone.href },
+  { label: "E-mail", value: site.email, href: `mailto:${site.email}` },
+  { label: "Adresse", value: `${site.address.zip} ${site.address.city} (${site.address.canton})` },
+  { label: "Zone d'intervention", value: site.area },
+];
 </script>
 
 <template>
   <section id="contact" class="py-24 lg:py-32" aria-labelledby="contact-title">
-    <div class="wrap grid gap-12 lg:grid-cols-2 lg:gap-16">
-      <div>
+    <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5">
         <p class="eyebrow">Contact</p>
         <h2 id="contact-title" class="mt-4 text-4xl sm:text-5xl">Parlons de votre projet.</h2>
         <p class="lead mt-6 max-w-md">
           On passe chez vous, on regarde, on écoute. Vous recevez ensuite une offre claire. Sans engagement.
         </p>
+        <dl class="mt-10 grid gap-5">
+          <div v-for="c in coords" :key="c.label" class="border-t border-base-300 pt-4">
+            <dt class="text-sm text-muted">{{ c.label }}</dt>
+            <dd class="mt-1 text-lg font-semibold break-words">
+              <a v-if="c.href" :href="c.href" class="hover:underline hover:underline-offset-4">{{ c.value }}</a>
+              <template v-else>{{ c.value }}</template>
+            </dd>
+          </div>
+        </dl>
       </div>
 
-      <dl class="grid content-start gap-6 sm:grid-cols-2">
-        <div class="border-t border-base-300 pt-4">
-          <dt class="text-sm text-muted">Téléphone</dt>
-          <dd class="mt-1 text-lg font-semibold"><a :href="site.phone.href">{{ site.phone.display }}</a></dd>
-        </div>
-        <div class="border-t border-base-300 pt-4">
-          <dt class="text-sm text-muted">E-mail</dt>
-          <dd class="mt-1 text-lg font-semibold break-all">
-            <a :href="`mailto:${site.email}`">{{ site.email }}</a>
-          </dd>
-        </div>
-        <div class="border-t border-base-300 pt-4">
-          <dt class="text-sm text-muted">Adresse</dt>
-          <dd class="mt-1 text-lg font-semibold">{{ site.address.zip }} {{ site.address.city }} ({{ site.address.canton }})</dd>
-        </div>
-        <div class="border-t border-base-300 pt-4">
-          <dt class="text-sm text-muted">Zone d'intervention</dt>
-          <dd class="mt-1 text-lg font-semibold">{{ site.area }}</dd>
-        </div>
-      </dl>
-      <!-- Le formulaire de demande arrive à l'étape « Interactif » -->
+      <div class="lg:col-span-7">
+        <ContactForm />
+      </div>
     </div>
   </section>
 </template>

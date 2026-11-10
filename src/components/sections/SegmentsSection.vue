@@ -2,8 +2,14 @@
 import { computed, ref } from "vue";
 import SectionHeader from "@/components/ui/SectionHeader.vue";
 import { segments, type SegmentId } from "@/content/segments";
+import { contactDraft } from "@/composables/contactDraft";
 
 const activeId = ref<SegmentId>("residence");
+
+function select(id: SegmentId) {
+  activeId.value = id;
+  contactDraft.profile = id;
+}
 const active = computed(() => segments.find((s) => s.id === activeId.value) ?? segments[0]);
 </script>
 
@@ -25,7 +31,7 @@ const active = computed(() => segments.find((s) => s.id === activeId.value) ?? s
           :aria-pressed="s.id === activeId"
           aria-controls="segment-detail"
           class="group relative aspect-[4/5] overflow-hidden rounded-box text-left outline-offset-4 sm:aspect-[4/3] lg:aspect-[3/4]"
-          @click="activeId = s.id"
+          @click="select(s.id)"
         >
           <img
             :src="s.image"
