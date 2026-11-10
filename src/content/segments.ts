@@ -1,7 +1,8 @@
-import kitchen from "@/assets/img/kitchen.jpg";
-import shop from "@/assets/img/shop.jpg";
-import dining from "@/assets/img/dining.jpg";
-import office from "@/assets/img/office.jpg";
+import type { Picture } from "vite-imagetools";
+import kitchen from "@/assets/img/kitchen.jpg?w=400;640&picture";
+import shop from "@/assets/img/shop.jpg?w=400;500&picture";
+import dining from "@/assets/img/dining.jpg?w=400;640&picture";
+import office from "@/assets/img/office.jpg?w=400;500&picture";
 
 export type SegmentId = "residence" | "commerce" | "hotellerie" | "entreprise";
 
@@ -9,7 +10,7 @@ export interface Segment {
   id: SegmentId;
   name: string;
   examples: string;
-  image: string;
+  image: Picture;
   title: string;
   text: string;
   points: { title: string; text: string }[];

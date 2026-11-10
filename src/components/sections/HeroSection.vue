@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import living from "@/assets/img/living.jpg";
+import living from "@/assets/img/living.jpg?w=480;832&picture";
+import AppPicture from "@/components/ui/AppPicture.vue";
 import { cta } from "@/content/site";
 
 const proofs = [
@@ -32,13 +33,12 @@ const proofs = [
       </div>
 
       <figure class="lg:col-span-6">
-        <img
-          :src="living"
+        <AppPicture
+          :picture="living"
           alt="Séjour lumineux avec cheminée centrale et grandes baies vitrées donnant sur un lac"
-          width="832"
-          height="1024"
-          fetchpriority="high"
-          class="aspect-[4/5] w-full rounded-box bg-base-200 object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
+          sizes="(min-width: 1024px) 34rem, calc(100vw - 2rem)"
+          eager
+          img-class="aspect-[4/5] w-full rounded-box bg-base-200 object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
         />
       </figure>
     </div>

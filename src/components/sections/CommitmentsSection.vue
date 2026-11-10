@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import entry from "@/assets/img/entry.jpg";
+import entry from "@/assets/img/entry.jpg?w=480;832&picture";
 import AppIcon from "@/components/ui/AppIcon.vue";
+import AppPicture from "@/components/ui/AppPicture.vue";
 import SectionHeader from "@/components/ui/SectionHeader.vue";
 import { commitments } from "@/content/commitments";
 </script>
@@ -17,7 +18,12 @@ import { commitments } from "@/content/commitments";
 
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
         <article class="relative min-h-80 overflow-hidden rounded-box md:col-span-2 lg:row-span-2">
-          <img :src="entry" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
+          <AppPicture
+            :picture="entry"
+            alt=""
+            sizes="(min-width: 1024px) 36rem, 100vw"
+            img-class="absolute inset-0 h-full w-full object-cover"
+          />
           <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
           <div class="absolute inset-x-0 bottom-0 p-8 text-white">
             <h3 class="text-2xl">La technique s'efface.</h3>

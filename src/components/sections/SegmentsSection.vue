@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import AppPicture from "@/components/ui/AppPicture.vue";
 import SectionHeader from "@/components/ui/SectionHeader.vue";
 import { segments, type SegmentId } from "@/content/segments";
 import { contactDraft } from "@/composables/contactDraft";
@@ -33,11 +34,11 @@ const active = computed(() => segments.find((s) => s.id === activeId.value) ?? s
           class="group relative aspect-[4/5] overflow-hidden rounded-box text-left outline-offset-4 sm:aspect-[4/3] lg:aspect-[3/4]"
           @click="select(s.id)"
         >
-          <img
-            :src="s.image"
+          <AppPicture
+            :picture="s.image"
             alt=""
-            loading="lazy"
-            class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            sizes="(min-width: 1024px) 17rem, 50vw"
+            img-class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
           <span class="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
           <span
