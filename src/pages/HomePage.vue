@@ -1,23 +1,27 @@
 <script setup lang="ts">
 import { useHead } from "@unhead/vue";
-import { cta } from "@/content/site";
+import HeroSection from "@/components/sections/HeroSection.vue";
+import SegmentsSection from "@/components/sections/SegmentsSection.vue";
+import DomainsSection from "@/components/sections/DomainsSection.vue";
+import BuildSection from "@/components/sections/BuildSection.vue";
+import CommitmentsSection from "@/components/sections/CommitmentsSection.vue";
+import ProcessSection from "@/components/sections/ProcessSection.vue";
+import TeamSection from "@/components/sections/TeamSection.vue";
+import FaqSection from "@/components/sections/FaqSection.vue";
+import ContactSection from "@/components/sections/ContactSection.vue";
 
 useHead({ title: "" });
 </script>
 
 <template>
-  <!-- Socle : les sections de la page d'accueil arrivent à l'étape « Contenu » -->
-  <section class="wrap py-24 sm:py-32">
-    <p class="eyebrow">Domotique Loxone · Vaud, Valais, Genève</p>
-    <h1 class="mt-5 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
-      Une maison qui s'occupe de tout. Installée par des gens qui répondent.
-    </h1>
-    <p class="lead mt-6 max-w-2xl">
-      Lumière, chauffage, stores, accès, alarme et énergie : tout fonctionne ensemble et se règle depuis une seule
-      application.
-    </p>
-    <div class="mt-10 flex flex-wrap items-center gap-4">
-      <RouterLink :to="cta.to" class="btn btn-primary px-6">{{ cta.label }}</RouterLink>
-    </div>
-  </section>
+  <HeroSection />
+  <SegmentsSection />
+  <DomainsSection />
+  <!-- Démo interactive (#demo) et économies : étape « Interactif » -->
+  <BuildSection />
+  <CommitmentsSection />
+  <ProcessSection />
+  <TeamSection />
+  <FaqSection />
+  <ContactSection />
 </template>

@@ -1,0 +1,44 @@
+<script setup lang="ts">
+import entry from "@/assets/img/entry.jpg";
+import AppIcon from "@/components/ui/AppIcon.vue";
+import SectionHeader from "@/components/ui/SectionHeader.vue";
+import { commitments } from "@/content/commitments";
+</script>
+
+<template>
+  <section class="py-24 lg:py-32" aria-labelledby="engagements-title">
+    <div class="wrap">
+      <SectionHeader
+        id="engagements-title"
+        eyebrow="Nos engagements"
+        title="Une installation se juge sur dix ans."
+        lead="Voici ce que nous garantissons sur chaque projet, du studio à l'atelier."
+      />
+
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
+        <article class="relative min-h-80 overflow-hidden rounded-box md:col-span-2 lg:row-span-2">
+          <img :src="entry" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+          <div class="absolute inset-x-0 bottom-0 p-8 text-white">
+            <h3 class="text-2xl">La technique s'efface.</h3>
+            <p class="mt-2 max-w-md text-white/85">
+              Des commandes sobres, des automatismes justes, une application lisible. Le confort se remarque, pas
+              l'installation.
+            </p>
+          </div>
+        </article>
+
+        <article v-for="c in commitments" :key="c.title" class="rounded-box bg-base-200 p-7">
+          <span class="grid size-10 place-items-center rounded-full bg-base-100">
+            <AppIcon :name="c.icon" :size="20" />
+          </span>
+          <h3 class="mt-5 text-lg">{{ c.title }}</h3>
+          <p class="mt-2 text-sm text-text">{{ c.text }}</p>
+          <ul v-if="c.tags" class="mt-4 flex flex-wrap gap-1.5">
+            <li v-for="t in c.tags" :key="t" class="badge badge-sm border-base-300 bg-base-100">{{ t }}</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</template>
