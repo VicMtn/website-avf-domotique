@@ -11,11 +11,13 @@ npm install
 npm run dev        # http://localhost:5173
 npm run build      # vérifie les types puis génère le site statique dans dist/
 npm run preview    # sert dist/
+npm test           # tests unitaires (Vitest)
 ```
 
 ## Structure
 
 - `src/content/` : textes et données (coordonnées, navigation…). **Les valeurs entre crochets sont à compléter.**
+- `src/composables/` : logique testable (calcul des économies…)
 - `src/pages/` : une page par route (`routes.ts`)
 - `src/components/layout/` : en-tête, pied de page
 - `src/components/ui/` : petits composants réutilisables

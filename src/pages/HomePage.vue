@@ -3,6 +3,8 @@ import { useHead } from "@unhead/vue";
 import HeroSection from "@/components/sections/HeroSection.vue";
 import SegmentsSection from "@/components/sections/SegmentsSection.vue";
 import DomainsSection from "@/components/sections/DomainsSection.vue";
+import DemoSection from "@/components/sections/DemoSection.vue";
+import SavingsSection from "@/components/sections/SavingsSection.vue";
 import BuildSection from "@/components/sections/BuildSection.vue";
 import CommitmentsSection from "@/components/sections/CommitmentsSection.vue";
 import ProcessSection from "@/components/sections/ProcessSection.vue";
@@ -17,7 +19,8 @@ useHead({ title: "" });
   <HeroSection />
   <SegmentsSection />
   <DomainsSection />
-  <!-- Démo interactive (#demo) et économies : étape « Interactif » -->
+  <DemoSection />
+  <SavingsSection />
   <BuildSection />
   <CommitmentsSection />
   <ProcessSection />
