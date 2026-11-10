@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@plugin "daisyui" {
+  themes: false;
+}
+
+/* Palette AVF : monochrome, un seul accent réservé aux petites surfaces (CTA secondaires, états actifs). */
+@plugin "daisyui/theme" {
+  name: "avf";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: #ffffff;
+  --color-base-200: #f5f5f7;
+  --color-base-300: #e8e8ed;
+  --color-base-content: #1d1d1f;
+  --color-primary: #1d1d1f;
+  --color-primary-content: #ffffff;
+  --color-secondary: #6e6e73;
+  --color-secondary-content: #ffffff;
+  /* Accent à valider avec le logo : jamais en aplat de section */
+  --color-accent: #d7261e;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1d1d1f;
+  --color-neutral-content: #f5f5f7;
+  --color-info: #3b6e96;
+  --color-info-content: #ffffff;
+  --color-success: #3f7d4e;
+  --color-success-content: #ffffff;
+  --color-warning: #a8741a;
+  --color-warning-content: #ffffff;
+  --color-error: #b3261e;
+  --color-error-content: #ffffff;
+  --radius-selector: 9999px;
+  --radius-field: 0.75rem;
+  --radius-box: 1.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-muted: #6e6e73;
+  --color-text: #424245;
+  --color-line: #d2d2d7;
+  /* Ambre : uniquement pour la lumière (démo, favicon) */
+  --color-glow: #efa93a;
+  --container-page: 72rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-base-100 text-base-content font-sans antialiased;
+    font-size: 1rem;
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+    font-feature-settings: "cv11", "ss01";
+  }
+  h1, h2, h3, h4 {
+    @apply font-semibold;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-base-content);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Conteneur de page : largeur max + gouttières */
+  .wrap {
+    @apply mx-auto w-full max-w-page px-4 sm:px-6 lg:px-8;
+  }
+  /* Surtitre de section */
+  .eyebrow {
+    @apply text-[13px] font-medium uppercase tracking-[0.06em] text-muted;
+  }
+  .lead {
+    @apply text-lg text-text sm:text-xl;
+    line-height: 1.5;
+  }
+
+  /* Texte long (pages légales) */
+  .prose-avf {
+    @apply max-w-2xl text-text;
+  }
+  .prose-avf h2 {
+    @apply mt-12 mb-3 text-2xl text-base-content;
+  }
+  .prose-avf h3 {
+    @apply mt-8 mb-2 text-lg text-base-content;
+  }
+  .prose-avf p,
+  .prose-avf ul {
+    @apply mb-4;
+  }
+  .prose-avf ul {
+    @apply list-disc space-y-1 pl-5;
+  }
+  .prose-avf a {
+    @apply text-base-content underline underline-offset-4 hover:no-underline;
+  }
+  .prose-avf strong {
+    @apply font-semibold text-base-content;
+  }
+}

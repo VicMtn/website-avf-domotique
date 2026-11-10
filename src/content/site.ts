@@ -1,0 +1,49 @@
+/**
+ * Informations de l'entreprise : source unique pour l'en-tête, le pied de page,
+ * le contact, les pages légales et le SEO.
+ * Les valeurs entre crochets sont à compléter avant la mise en ligne.
+ */
+
+export const site = {
+  name: "AVF Domotique",
+  legalName: "AVF Domotique Sàrl",
+  url: "https://avf-domotique.ch",
+  tagline: "Domotique Loxone en Suisse romande",
+  description:
+    "AVF Domotique, Etoy (VD). Installation de domotique Loxone pour villas, appartements, commerces, hôtellerie et bureaux, en Vaud, Valais et Genève.",
+
+  phone: { display: "[+41 00 000 00 00]", href: "tel:+41000000000" },
+  email: "contact@avf-domotique.ch",
+  address: {
+    street: "[Rue et numéro]",
+    zip: "1163",
+    city: "Etoy",
+    canton: "VD",
+    country: "CH",
+  },
+  area: "Vaud, Valais, Genève",
+
+  legal: {
+    uid: "[CHE-000.000.000]",
+    register: "Registre du commerce du canton de Vaud",
+    managers: "[Prénom Nom, Prénom Nom, Prénom Nom]",
+    host: "[Nom de l'hébergeur, adresse]",
+    formService: "[Service d'envoi du formulaire]",
+  },
+} as const;
+
+export interface NavItem {
+  label: string;
+  /** Ancre de la page d'accueil */
+  to: string;
+}
+
+/** Navigation principale : 4 entrées maximum */
+export const nav: NavItem[] = [
+  { label: "Solutions", to: "/#solutions" },
+  { label: "Démo", to: "/#demo" },
+  { label: "Équipe", to: "/#equipe" },
+  { label: "FAQ", to: "/#faq" },
+];
+
+export const cta = { label: "Prendre rendez-vous", to: "/#contact" };
