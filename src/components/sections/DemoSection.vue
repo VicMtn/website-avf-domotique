@@ -47,7 +47,10 @@ const status = computed(() => {
   const n = lights.value.size;
   const heatRoom = plan.value.rooms.find((r) => r.id === plan.value.heatRoom);
   return [
-    { label: "Lumières", value: n === 0 ? "Toutes éteintes" : `${n} pièce${n > 1 ? "s" : ""} allumée${n > 1 ? "s" : ""}` },
+    {
+      label: "Lumières",
+      value: n === 0 ? "Toutes éteintes" : `${n} pièce${n > 1 ? "s" : ""} allumée${n > 1 ? "s" : ""}`,
+    },
     { label: "Stores", value: blinds.value === 0 ? "Ouverts" : blinds.value === 1 ? "Fermés" : "Ombrage" },
     { label: "Chauffage", value: `${heatRoom?.name ?? ""} ${formatTemp(temps.value[plan.value.heatRoom] ?? 20)}` },
     { label: "Alarme", value: alarm.value ? "Armée" : "Désarmée" },
@@ -65,7 +68,7 @@ const status = computed(() => {
         lead="Choisissez un moment de la journée : lumières, stores, chauffage et alarme changent ensemble. Touchez une pièce pour allumer ou éteindre."
       />
 
-      <div class="grid gap-6 rounded-box bg-base-100 p-4 sm:p-8 lg:grid-cols-12 lg:gap-10">
+      <div v-reveal class="grid gap-6 rounded-box bg-base-100 p-4 sm:p-8 lg:grid-cols-12 lg:gap-10">
         <div class="lg:col-span-7">
           <FloorPlanSvg
             :plan="plan"
@@ -78,15 +81,14 @@ const status = computed(() => {
         </div>
 
         <div class="flex flex-col gap-6 lg:col-span-5">
-          <div role="tablist" class="tabs tabs-box tabs-sm self-start" aria-label="Type de bâtiment">
+          <div role="group" class="tabs tabs-box self-start tabs-sm" aria-label="Type de bâtiment">
             <button
               v-for="p in plans"
               :key="p.id"
               type="button"
-              role="tab"
               class="tab"
               :class="{ 'tab-active': p.id === planId }"
-              :aria-selected="p.id === planId"
+              :aria-pressed="p.id === planId"
               @click="selectPlan(p.id)"
             >
               {{ p.label }}
@@ -101,7 +103,7 @@ const status = computed(() => {
                 :key="s.id"
                 type="button"
                 class="btn btn-sm"
-                :class="s.id === sceneId ? 'btn-primary' : 'btn-outline border-base-300'"
+                :class="s.id === sceneId ? 'btn-primary' : 'border-base-300 btn-outline'"
                 :aria-pressed="s.id === sceneId"
                 @click="applyScene(s)"
               >

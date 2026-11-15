@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { imagetools } from "vite-imagetools";
 import { writeFileSync } from "node:fs";
 import type { ViteSSGOptions } from "vite-ssg";
-import { canonicalUrl } from "./src/content/site";
+import { canonicalUrl } from "./src/content/site.ts";
 
 /** Pages publiées, collectées pendant le rendu pour le sitemap */
 let renderedPaths: string[] = [];

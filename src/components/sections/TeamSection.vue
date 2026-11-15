@@ -13,7 +13,7 @@ import { team } from "@/content/team";
         lead="Vous parlez directement à ceux qui viennent chez vous : pas de sous-traitance, pas de centre d'appel."
       />
       <div class="grid gap-4 md:grid-cols-3">
-        <article v-for="m in team" :key="m.name" class="rounded-box border border-base-300 p-7">
+        <article v-for="(m, i) in team" :key="m.name" v-reveal="i * 100" class="rounded-box border border-base-300 p-7">
           <img
             v-if="m.photo"
             :src="m.photo"

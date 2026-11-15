@@ -17,7 +17,7 @@ import { commitments } from "@/content/commitments";
       />
 
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
-        <article class="relative min-h-80 overflow-hidden rounded-box md:col-span-2 lg:row-span-2">
+        <article v-reveal class="relative min-h-80 overflow-hidden rounded-box md:col-span-2 lg:row-span-2">
           <AppPicture
             :picture="entry"
             alt=""
@@ -34,14 +34,19 @@ import { commitments } from "@/content/commitments";
           </div>
         </article>
 
-        <article v-for="c in commitments" :key="c.title" class="rounded-box bg-base-200 p-7">
+        <article
+          v-for="(c, i) in commitments"
+          :key="c.title"
+          v-reveal="80 + i * 80"
+          class="rounded-box bg-base-200 p-7"
+        >
           <span class="grid size-10 place-items-center rounded-full bg-base-100">
             <AppIcon :name="c.icon" :size="20" />
           </span>
           <h3 class="mt-5 text-lg">{{ c.title }}</h3>
           <p class="mt-2 text-sm text-text">{{ c.text }}</p>
           <ul v-if="c.tags" class="mt-4 flex flex-wrap gap-1.5">
-            <li v-for="t in c.tags" :key="t" class="badge badge-sm border-base-300 bg-base-100">{{ t }}</li>
+            <li v-for="t in c.tags" :key="t" class="badge border-base-300 bg-base-100 badge-sm">{{ t }}</li>
           </ul>
         </article>
       </div>

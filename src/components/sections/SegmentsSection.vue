@@ -26,8 +26,9 @@ const active = computed(() => segments.find((s) => s.id === activeId.value) ?? s
 
       <div class="grid grid-cols-2 gap-3 lg:grid-cols-4" role="group" aria-label="Choisir un type de bâtiment">
         <button
-          v-for="s in segments"
+          v-for="(s, i) in segments"
           :key="s.id"
+          v-reveal="i * 80"
           type="button"
           :aria-pressed="s.id === activeId"
           aria-controls="segment-detail"
@@ -42,7 +43,7 @@ const active = computed(() => segments.find((s) => s.id === activeId.value) ?? s
           />
           <span class="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
           <span
-            class="absolute inset-0 rounded-box ring-inset transition"
+            class="absolute inset-0 rounded-box transition ring-inset"
             :class="s.id === activeId ? 'ring-2 ring-base-100' : 'ring-0'"
           />
           <span class="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">

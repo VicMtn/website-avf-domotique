@@ -30,7 +30,7 @@ const coords = [
         </dl>
       </div>
 
-      <div class="lg:col-span-7">
+      <div v-reveal="100" class="lg:col-span-7">
         <ContactForm />
       </div>
     </div>

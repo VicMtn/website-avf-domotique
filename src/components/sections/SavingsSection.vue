@@ -63,7 +63,7 @@ function requestEstimate() {
         lead="Trois questions, une réponse en francs. La maison recharge la voiture quand le soleil produit, chauffe quand vous êtes là et éteint ce qui ne sert à rien."
       />
 
-      <div class="grid gap-6 lg:grid-cols-12 lg:gap-10">
+      <div v-reveal class="grid gap-6 lg:grid-cols-12 lg:gap-10">
         <form class="flex flex-col gap-8 lg:col-span-6" @submit.prevent>
           <fieldset v-for="q in questions" :key="q.key">
             <legend class="font-semibold">{{ q.label }}</legend>
@@ -73,7 +73,7 @@ function requestEstimate() {
                 :key="o.value"
                 v-model="answers[q.key]"
                 type="radio"
-                class="btn btn-outline border-base-300 checked:btn-primary"
+                class="btn border-base-300 btn-outline checked:btn-primary"
                 :name="q.key"
                 :value="o.value"
                 :aria-label="o.label"
@@ -102,10 +102,12 @@ function requestEstimate() {
           </ul>
 
           <p class="mt-5 text-xs text-muted">
-            Ordre de grandeur prudent pour un foyer en Suisse romande, sur la base de 0,30 CHF/kWh. Le chiffrage exact se
-            fait chez vous, avec vos factures.
+            Ordre de grandeur prudent pour un foyer en Suisse romande, sur la base de 0,30 CHF/kWh. Le chiffrage exact
+            se fait chez vous, avec vos factures.
           </p>
-          <RouterLink :to="cta.to" class="btn btn-primary mt-6 px-6" @click="requestEstimate">Recevoir mon estimation précise</RouterLink>
+          <RouterLink :to="cta.to" class="btn mt-6 px-6 btn-primary" @click="requestEstimate"
+            >Recevoir mon estimation précise</RouterLink
+          >
         </div>
       </div>
     </div>

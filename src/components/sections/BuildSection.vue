@@ -27,8 +27,9 @@ const options = [
 
       <div class="mt-12 grid gap-4 md:grid-cols-2 lg:mt-16">
         <article
-          v-for="o in options"
+          v-for="(o, i) in options"
           :key="o.title"
+          v-reveal="i * 100"
           class="rounded-box p-8 sm:p-10"
           :class="o.filled ? 'bg-base-100' : 'border border-line'"
         >

@@ -18,7 +18,7 @@ import { domains } from "@/content/domains";
       </div>
 
       <ul class="divide-y divide-base-300 border-y border-base-300 lg:col-span-7">
-        <li v-for="d in domains" :key="d.title" class="grid grid-cols-[2.75rem_1fr] gap-x-5 py-7">
+        <li v-for="d in domains" :key="d.title" v-reveal class="grid grid-cols-[2.75rem_1fr] gap-x-5 py-7">
           <span class="grid size-11 place-items-center rounded-full bg-base-200">
             <AppIcon :name="d.icon" />
           </span>
