@@ -12,6 +12,8 @@ npm run dev        # http://localhost:5173
 npm run build      # vérifie les types puis génère le site statique dans dist/
 npm run preview    # sert dist/
 npm test           # tests unitaires (Vitest)
+npm run lint       # ESLint (Vue + TypeScript)
+npm run format     # Prettier, tri des classes Tailwind compris
 ```
 
 ## Structure

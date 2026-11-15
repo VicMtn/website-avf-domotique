@@ -19,7 +19,13 @@ const mime = (format: string) => `image/${format === "jpg" ? "jpeg" : format}`;
 
 <template>
   <picture class="contents">
-    <source v-for="(srcset, format) in picture.sources" :key="format" :type="mime(format)" :srcset="srcset" :sizes="sizes" />
+    <source
+      v-for="(srcset, format) in picture.sources"
+      :key="format"
+      :type="mime(format)"
+      :srcset="srcset"
+      :sizes="sizes"
+    />
     <img
       :src="picture.img.src"
       :width="picture.img.w"

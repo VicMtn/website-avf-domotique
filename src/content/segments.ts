@@ -28,7 +28,10 @@ export const segments: Segment[] = [
     title: "Plus de confort au quotidien, moins d'énergie gaspillée.",
     text: "En construction comme en rénovation, l'installation suit votre façon de vivre. Les interrupteurs restent des interrupteurs ; la maison s'occupe du reste.",
     points: [
-      { title: "Climat par pièce", text: "Coordonné avec votre pompe à chaleur, avec un mode éco automatique en votre absence." },
+      {
+        title: "Climat par pièce",
+        text: "Coordonné avec votre pompe à chaleur, avec un mode éco automatique en votre absence.",
+      },
       { title: "Solaire en priorité", text: "Boiler, chauffage et véhicule alimentés d'abord par vos panneaux." },
       { title: "Lumière et ombrage", text: "Scénarios par moment de la journée, stores réglés sur le soleil." },
       { title: "Sécurité", text: "Alarme, fumée, fuite d'eau et interphone vidéo sur votre téléphone." },
@@ -45,7 +48,10 @@ export const segments: Segment[] = [
     title: "Votre point de vente s'ouvre et se ferme d'un seul geste.",
     text: "Vitrine, éclairage de vente, climat, alarme et accès du personnel suivent vos horaires d'ouverture. Vous gagnez du temps matin et soir, et vous maîtrisez vos consommations.",
     points: [
-      { title: "Éclairage selon les horaires", text: "Vitrine mise en valeur le soir, extinction automatique la nuit." },
+      {
+        title: "Éclairage selon les horaires",
+        text: "Vitrine mise en valeur le soir, extinction automatique la nuit.",
+      },
       { title: "Ouverture et fermeture", text: "Lumière, climat, stores et alarme pilotés par un badge." },
       { title: "Accès du personnel", text: "Badges par employé et par plage horaire, historique des entrées." },
       { title: "Suivi énergétique", text: "Vous voyez ce que consomment l'éclairage, le froid et la climatisation." },

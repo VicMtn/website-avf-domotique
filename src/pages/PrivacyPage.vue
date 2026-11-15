@@ -70,8 +70,9 @@ usePageMeta({
       <h2>Vos droits</h2>
       <p>
         Vous pouvez à tout moment demander l'accès à vos données, leur rectification ou leur suppression, en écrivant à
-        <a :href="`mailto:${site.email}`">{{ site.email }}</a>. Vous pouvez également vous adresser au Préposé fédéral
-        à la protection des données et à la transparence (PFPDT).
+        <a :href="`mailto:${site.email}`">{{ site.email }}</a
+        >. Vous pouvez également vous adresser au Préposé fédéral à la protection des données et à la transparence
+        (PFPDT).
       </p>
     </div>
   </div>

@@ -26,8 +26,12 @@ const year = new Date().getFullYear();
       <div>
         <p class="font-semibold">Contact</p>
         <ul class="mt-3 space-y-2 text-text">
-          <li><a :href="site.phone.href" class="hover:text-base-content">{{ site.phone.display }}</a></li>
-          <li><a :href="`mailto:${site.email}`" class="hover:text-base-content">{{ site.email }}</a></li>
+          <li>
+            <a :href="site.phone.href" class="hover:text-base-content">{{ site.phone.display }}</a>
+          </li>
+          <li>
+            <a :href="`mailto:${site.email}`" class="hover:text-base-content">{{ site.email }}</a>
+          </li>
           <li>{{ site.address.zip }} {{ site.address.city }} ({{ site.address.canton }})</li>
           <li>Intervention : {{ site.area }}</li>
         </ul>

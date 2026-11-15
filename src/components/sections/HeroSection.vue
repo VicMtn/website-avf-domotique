@@ -24,7 +24,7 @@ const proofs = [
           joignables après.
         </p>
         <div class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
-          <RouterLink :to="cta.to" class="btn btn-primary px-6">{{ cta.label }}</RouterLink>
+          <RouterLink :to="cta.to" class="btn px-6 btn-primary">{{ cta.label }}</RouterLink>
           <RouterLink to="/#pour-qui" class="group inline-flex items-center gap-1.5 font-medium">
             Ce que ça change pour vous
             <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>

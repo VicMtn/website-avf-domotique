@@ -17,15 +17,16 @@ usePageMeta({
     <div class="prose-avf mt-6">
       <h2>Éditeur du site</h2>
       <p>
-        <strong>{{ site.legalName }}</strong><br />
-        {{ site.address.street }}, {{ site.address.zip }} {{ site.address.city }} ({{ site.address.canton }}),
-        Suisse<br />
+        <strong>{{ site.legalName }}</strong
+        ><br />
+        {{ site.address.street }}, {{ site.address.zip }} {{ site.address.city }} ({{ site.address.canton }}), Suisse<br />
         Numéro IDE : {{ site.legal.uid }}<br />
         Inscrite au {{ site.legal.register }}<br />
         Associés gérants : {{ site.legal.managers }}
       </p>
       <p>
-        Téléphone : <a :href="site.phone.href">{{ site.phone.display }}</a><br />
+        Téléphone : <a :href="site.phone.href">{{ site.phone.display }}</a
+        ><br />
         E-mail : <a :href="`mailto:${site.email}`">{{ site.email }}</a>
       </p>
 

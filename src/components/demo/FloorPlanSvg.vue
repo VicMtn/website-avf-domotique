@@ -13,8 +13,7 @@ const props = defineProps<{
 const emit = defineEmits<{ toggle: [roomId: string] }>();
 
 const isOn = (room: Room) => props.lights.has(room.id);
-const roomLabel = (room: Room) =>
-  `${room.name} : lumière ${isOn(room) ? "allumée" : "éteinte"}. Appuyer pour changer.`;
+const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allumée" : "éteinte"}. Appuyer pour changer.`;
 </script>
 
 <template>
@@ -83,24 +82,72 @@ const roomLabel = (room: Room) =>
 .plan {
   --ink: var(--color-base-content);
 }
-.wall { fill: none; stroke: var(--ink); stroke-width: 6; stroke-linecap: square; }
-.partition { fill: none; stroke: var(--ink); stroke-width: 3; }
-.dashed { fill: none; stroke: var(--ink); stroke-width: 1; }
+.wall {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 6;
+  stroke-linecap: square;
+}
+.partition {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+.dashed {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+}
 
-.room { outline: none; }
-.area { fill: transparent; transition: fill 0.2s; }
-.room:hover .area { fill: color-mix(in oklab, var(--ink) 3%, transparent); }
-.room:focus-visible .area { fill: color-mix(in oklab, var(--ink) 6%, transparent); }
+.room {
+  outline: none;
+}
+.area {
+  fill: transparent;
+  transition: fill 0.2s;
+}
+.room:hover .area {
+  fill: color-mix(in oklab, var(--ink) 3%, transparent);
+}
+.room:focus-visible .area {
+  fill: color-mix(in oklab, var(--ink) 6%, transparent);
+}
 
-.pool { fill: url(#avf-glow); opacity: 0; transition: opacity 0.9s ease; }
-.room[data-light="on"] .pool { opacity: 1; }
-.bulb { fill: #fff; stroke: var(--ink); stroke-width: 1.5; transition: fill 0.4s; }
-.room[data-light="on"] .bulb { fill: var(--color-glow); }
+.pool {
+  fill: url(#avf-glow);
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.room[data-light="on"] .pool {
+  opacity: 1;
+}
+.bulb {
+  fill: #fff;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  transition: fill 0.4s;
+}
+.room[data-light="on"] .bulb {
+  fill: var(--color-glow);
+}
 
-.room-label { font-size: 13px; fill: var(--ink); opacity: 0.7; }
-.temp { font-size: 15px; font-weight: 600; fill: var(--ink); font-variant-numeric: tabular-nums; }
+.room-label {
+  font-size: 13px;
+  fill: var(--ink);
+  opacity: 0.7;
+}
+.temp {
+  font-size: 15px;
+  font-weight: 600;
+  fill: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
 
-.window { fill: #d9e5ec; stroke: var(--ink); stroke-width: 1.5; }
+.window {
+  fill: #d9e5ec;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
 /* La lame descend de 0 à 100 % sur la fenêtre */
 .blind {
   fill: var(--color-muted);
@@ -110,9 +157,20 @@ const roomLabel = (room: Room) =>
   transition: transform 1.2s cubic-bezier(0.6, 0.05, 0.3, 1);
 }
 
-.alarm-ring { fill: none; stroke: var(--color-accent); stroke-width: 2; opacity: 0; transition: opacity 0.4s; }
-.plan[data-alarm="on"] .alarm-ring { opacity: 1; animation: pulse 2s ease-in-out infinite; }
+.alarm-ring {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.plan[data-alarm="on"] .alarm-ring {
+  opacity: 1;
+  animation: pulse 2s ease-in-out infinite;
+}
 @keyframes pulse {
-  50% { opacity: 0.35; }
+  50% {
+    opacity: 0.35;
+  }
 }
 </style>

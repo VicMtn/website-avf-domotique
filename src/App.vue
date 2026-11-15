@@ -21,7 +21,7 @@ useSeoMeta({
 <template>
   <a
     href="#contenu"
-    class="btn btn-primary btn-sm sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60]"
+    class="btn sr-only btn-primary btn-sm focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60]"
   >
     Aller au contenu
   </a>

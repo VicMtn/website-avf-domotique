@@ -256,8 +256,7 @@ export const plans: FloorPlan[] = [
         blinds: 0,
         temps: { vente: 16, reserve: 15, bureau: 16 },
         alarm: true,
-        story:
-          "19 h : un badge en sortant. Tout s'éteint sauf la vitrine, allumée jusqu'à 22 h, et l'alarme s'arme.",
+        story: "19 h : un badge en sortant. Tout s'éteint sauf la vitrine, allumée jusqu'à 22 h, et l'alarme s'arme.",
       },
       {
         id: "nuit",

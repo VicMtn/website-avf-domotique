@@ -26,7 +26,10 @@ const formEl = useTemplateRef<HTMLFormElement>("formEl");
 const doneEl = useTemplateRef<HTMLElement>("doneEl");
 
 // Pré-remplissage depuis les autres sections
-watch(() => contactDraft.profile, (p) => (form.profile = p));
+watch(
+  () => contactDraft.profile,
+  (p) => (form.profile = p),
+);
 watch(
   () => contactDraft.context,
   (ctx) => {
@@ -36,7 +39,9 @@ watch(
 
 function validate(): boolean {
   errors.name = form.name.trim() ? undefined : "Indiquez votre nom.";
-  errors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()) ? undefined : "Indiquez une adresse e-mail valide.";
+  errors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())
+    ? undefined
+    : "Indiquez une adresse e-mail valide.";
   errors.message = form.message.trim().length >= 10 ? undefined : "Décrivez votre projet en quelques mots.";
   return !errors.name && !errors.email && !errors.message;
 }
@@ -90,7 +95,7 @@ const describedBy = (f: Field) => (errors[f] ? `err-${f}` : undefined);
     <div v-if="status === 'success'" ref="doneEl" tabindex="-1" role="status" class="outline-none">
       <h3 class="text-2xl">Merci, votre demande est transmise.</h3>
       <p class="mt-3 text-text">Nous vous recontactons sous deux jours ouvrables pour convenir d'une visite.</p>
-      <button type="button" class="btn btn-outline mt-6 border-base-300" @click="reset">Nouvelle demande</button>
+      <button type="button" class="btn mt-6 border-base-300 btn-outline" @click="reset">Nouvelle demande</button>
     </div>
 
     <form v-else ref="formEl" class="grid gap-5" novalidate @submit.prevent="submit">
@@ -164,19 +169,24 @@ const describedBy = (f: Field) => (errors[f] ? `err-${f}` : undefined);
           :aria-invalid="!!errors.message"
           :aria-describedby="describedBy('message')"
         />
-        <span v-if="errors.message" :id="'err-message'" class="mt-1 block text-sm text-error">{{ errors.message }}</span>
+        <span v-if="errors.message" :id="'err-message'" class="mt-1 block text-sm text-error">{{
+          errors.message
+        }}</span>
       </label>
 
       <!-- Piège à robots -->
       <div class="absolute -left-[9999px]" aria-hidden="true">
-        <label>Site web <input v-model="form.website" type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        <label
+          >Site web <input v-model="form.website" type="text" name="website" tabindex="-1" autocomplete="off"
+        /></label>
       </div>
 
       <div v-if="status === 'error'" role="alert" class="rounded-field border border-error/30 bg-base-100 p-4 text-sm">
         <p class="font-medium text-error">{{ errorMessage }}</p>
         <p class="mt-1 text-text">
           Vous pouvez aussi nous écrire directement à
-          <a :href="mailtoFallback" class="underline underline-offset-4">{{ site.email }}</a>.
+          <a :href="mailtoFallback" class="underline underline-offset-4">{{ site.email }}</a
+          >.
         </p>
       </div>
 
@@ -185,8 +195,8 @@ const describedBy = (f: Field) => (errors[f] ? `err-${f}` : undefined);
           Vos données servent uniquement à répondre à votre demande.
           <RouterLink to="/confidentialite" class="underline underline-offset-4">Confidentialité</RouterLink>
         </p>
-        <button type="submit" class="btn btn-primary px-6" :disabled="status === 'sending'">
-          <span v-if="status === 'sending'" class="loading loading-spinner loading-sm" aria-hidden="true" />
+        <button type="submit" class="btn px-6 btn-primary" :disabled="status === 'sending'">
+          <span v-if="status === 'sending'" class="loading loading-sm loading-spinner" aria-hidden="true" />
           {{ status === "sending" ? "Envoi…" : "Envoyer la demande" }}
         </button>
       </div>
