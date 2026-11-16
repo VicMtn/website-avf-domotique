@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
 import { imagetools } from "vite-imagetools";
-import { writeFileSync } from "node:fs";
+import { rmSync, writeFileSync } from "node:fs";
 import type { ViteSSGOptions } from "vite-ssg";
 import { canonicalUrl } from "./src/content/site.ts";
 
@@ -36,6 +36,8 @@ export default defineConfig({
       return renderedPaths.concat("/404");
     },
     onFinished: () => {
+      // Manifeste interne au rendu : inutile en ligne
+      rmSync("dist/.vite", { recursive: true, force: true });
       const urls = renderedPaths
         .filter((p) => !NOT_INDEXED.includes(p))
         .map((p) => `  <url><loc>${canonicalUrl(p)}</loc></url>`);

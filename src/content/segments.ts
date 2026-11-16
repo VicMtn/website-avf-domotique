@@ -1,8 +1,8 @@
 import type { Picture } from "vite-imagetools";
 import kitchen from "@/assets/img/kitchen.jpg?w=400;640&picture";
-import shop from "@/assets/img/shop.jpg?w=400;500&picture";
+import shop from "@/assets/img/shop-window.jpg?w=400;640&picture";
 import dining from "@/assets/img/dining.jpg?w=400;640&picture";
-import office from "@/assets/img/office.jpg?w=400;500&picture";
+import office from "@/assets/img/office-daylight.jpg?w=400;640&picture";
 
 export type SegmentId = "residence" | "commerce" | "hotellerie" | "entreprise";
 

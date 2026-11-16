@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import entry from "@/assets/img/entry.jpg?w=480;832&picture";
+import lampBlinds from "@/assets/img/lamp-blinds.jpg?w=600;1152&picture";
 import AppIcon from "@/components/ui/AppIcon.vue";
 import AppPicture from "@/components/ui/AppPicture.vue";
 import SectionHeader from "@/components/ui/SectionHeader.vue";
@@ -11,15 +11,15 @@ import { commitments } from "@/content/commitments";
     <div class="wrap">
       <SectionHeader
         id="engagements-title"
-        eyebrow="Nos engagements"
+        eyebrow="Ce que nous faisons pour vous"
         title="Une installation se juge sur dix ans."
-        lead="Voici nos engagements sur chaque projet, du studio à l'atelier."
+        lead="Sur chaque projet, du studio à l'atelier, voici comment nous travaillons."
       />
 
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
         <article v-reveal class="relative min-h-80 overflow-hidden rounded-box md:col-span-2 lg:row-span-2">
           <AppPicture
-            :picture="entry"
+            :picture="lampBlinds"
             alt=""
             sizes="(min-width: 1024px) 36rem, 100vw"
             img-class="absolute inset-0 h-full w-full object-cover"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import living from "@/assets/img/living.jpg?w=480;832&picture";
+import homeDusk from "@/assets/img/home-dusk.jpg?w=544;832;1088&picture";
 import AppPicture from "@/components/ui/AppPicture.vue";
 import { cta } from "@/content/site";
 
@@ -34,11 +34,11 @@ const proofs = [
 
       <figure class="lg:col-span-6">
         <AppPicture
-          :picture="living"
-          alt="Séjour lumineux avec cheminée centrale et grandes baies vitrées donnant sur un lac"
+          :picture="homeDusk"
+          alt="Séjour au crépuscule, éclairé par des spots et un lampadaire, devant de grandes baies vitrées"
           sizes="(min-width: 1024px) 34rem, calc(100vw - 2rem)"
           eager
-          img-class="aspect-[4/5] w-full rounded-box bg-base-200 object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
+          img-class="aspect-[4/5] w-full rounded-box bg-base-200 object-cover object-[50%_65%] sm:aspect-[5/4] lg:aspect-[4/5]"
         />
       </figure>
     </div>

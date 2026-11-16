@@ -16,7 +16,7 @@ export const commitments: Commitment[] = [
   {
     icon: "lock",
     title: "Sécurisé dès la conception",
-    text: "Réseau segmenté, accès distant chiffré, droits par utilisateur. Notre informaticien en est responsable sur chaque chantier.",
+    text: "Le Miniserver fonctionne sur un réseau séparé de vos appareils personnels. L'accès à distance est chiffré, et chaque utilisateur n'a que les droits dont il a besoin.",
   },
   {
     icon: "plug",

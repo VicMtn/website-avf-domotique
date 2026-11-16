@@ -1,6 +1,6 @@
 # Compression et cache (serveurs Apache)
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml text/plain
 </IfModule>
 <IfModule mod_expires.c>
   ExpiresActive On
@@ -8,6 +8,11 @@
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 month"
+  # Images de /assets : nom avec empreinte, donc cache long sans risque
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  # JPEG : aussi og-image.jpg, dont le nom ne change pas
+  ExpiresByType image/jpeg "access plus 1 month"
   ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
