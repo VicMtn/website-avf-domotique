@@ -70,7 +70,7 @@ const active = computed(() => segments.find((s) => s.id === activeId.value) ?? s
           </dl>
         </div>
         <aside class="rounded-box bg-base-200 p-6 lg:col-span-5 lg:self-start">
-          <p class="eyebrow">Projet type</p>
+          <p class="eyebrow">Exemple de projet</p>
           <p class="mt-3 text-text">{{ active.caseStudy }}</p>
           <ul class="mt-5 flex flex-wrap gap-2" aria-label="Matériel Loxone utilisé">
             <li v-for="g in active.gear" :key="g" class="badge badge-ghost border-base-300 bg-base-100">{{ g }}</li>

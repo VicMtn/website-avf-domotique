@@ -87,7 +87,7 @@ const describedBy = (f: Field) => (errors[f] ? `err-${f}` : undefined);
   <div class="rounded-box bg-base-100 p-6 sm:p-8">
     <div v-if="status === 'success'" ref="doneEl" tabindex="-1" role="status" class="outline-none">
       <h3 class="text-2xl">Merci, votre demande est transmise.</h3>
-      <p class="mt-3 text-text">Nous vous recontactons sous deux jours ouvrables pour convenir d'une visite.</p>
+      <p class="mt-3 text-text">Nous vous recontactons sous deux jours ouvrés pour convenir d'une visite.</p>
       <button type="button" class="btn mt-6 border-base-300 btn-outline" @click="reset">Nouvelle demande</button>
     </div>
 

@@ -13,7 +13,7 @@ import { commitments } from "@/content/commitments";
         id="engagements-title"
         eyebrow="Nos engagements"
         title="Une installation se juge sur dix ans."
-        lead="Voici ce que nous garantissons sur chaque projet, du studio à l'atelier."
+        lead="Voici nos engagements sur chaque projet, du studio à l'atelier."
       />
 
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">

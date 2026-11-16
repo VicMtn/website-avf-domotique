@@ -14,7 +14,7 @@ export interface Segment {
   title: string;
   text: string;
   points: { title: string; text: string }[];
-  /** Projet type */
+  /** Exemple de projet (illustratif, pas une réalisation) */
   caseStudy: string;
   gear: string[];
 }

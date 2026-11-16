@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppIcon from "@/components/ui/AppIcon.vue";
 import SectionHeader from "@/components/ui/SectionHeader.vue";
 import { team } from "@/content/team";
 </script>
@@ -10,25 +11,14 @@ import { team } from "@/content/team";
         id="equipe-title"
         eyebrow="Équipe"
         title="Trois amis, trois métiers."
-        lead="Vous parlez directement à ceux qui viennent chez vous : pas de sous-traitance, pas de centre d'appel."
+        lead="Une installation domotique demande trois compétences : nous les réunissons dans la même équipe. Vous parlez directement à ceux qui viennent chez vous, de la première visite au suivi."
       />
       <div class="grid gap-4 md:grid-cols-3">
-        <article v-for="(m, i) in team" :key="m.name" v-reveal="i * 100" class="rounded-box bg-base-100 p-7">
-          <img
-            v-if="m.photo"
-            :src="m.photo"
-            :alt="`Portrait de ${m.name}`"
-            loading="lazy"
-            class="size-16 rounded-full object-cover"
-          />
-          <span
-            v-else
-            class="grid size-16 place-items-center rounded-full bg-base-200 text-xl font-semibold"
-            aria-hidden="true"
-          >
-            {{ m.name.charAt(0) }}
+        <article v-for="(m, i) in team" :key="m.title" v-reveal="i * 100" class="rounded-box bg-base-100 p-7">
+          <span class="grid size-14 place-items-center rounded-full bg-base-200">
+            <AppIcon :name="m.icon" :size="24" />
           </span>
-          <h3 class="mt-6 text-xl">{{ m.name }}</h3>
+          <h3 class="mt-6 text-xl">{{ m.title }}</h3>
           <p class="text-sm font-medium text-muted">{{ m.role }}</p>
           <p class="mt-4 text-text">{{ m.text }}</p>
         </article>

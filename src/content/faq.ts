@@ -10,7 +10,7 @@ export const faq: Faq[] = [
   },
   {
     q: "Pourquoi Loxone plutôt qu'un autre système ?",
-    a: "Un seul système et une seule application pour l'éclairage, le climat, les stores, les accès, la sécurité, l'audio et l'énergie. La logique tourne localement, sans abonnement, et l'écosystème s'ouvre aux standards du bâtiment.",
+    a: "Un seul système et une seule application pour l'éclairage, le climat, les stores, les accès, la sécurité, l'audio et l'énergie. La logique tourne localement, dans le bâtiment, et l'écosystème s'ouvre aux standards du bâtiment.",
   },
   {
     q: "Est-ce possible en rénovation ?",
