@@ -12,7 +12,7 @@ import { commitments } from "@/content/commitments";
       <SectionHeader
         id="engagements-title"
         eyebrow="Ce que nous faisons pour vous"
-        title="Une installation se juge sur dix ans."
+        title="Une domotique discrète, fiable et ouverte."
         lead="Sur chaque projet, du studio à l'atelier, voici comment nous travaillons."
       />
 
