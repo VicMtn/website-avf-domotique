@@ -77,7 +77,7 @@ const isActive = (to: string) => active.value !== null && to.endsWith(`#${active
         <li v-for="item in nav" :key="item.to">
           <RouterLink
             :to="item.to"
-            class="-mx-3 block rounded-field px-3 py-3 text-lg transition-colors hover:bg-base-200"
+            class="-mx-3 block rounded-field px-3 py-3 text-lg transition-colors hover:bg-base-200 aria-[current=true]:text-accent"
             :aria-current="isActive(item.to) ? 'true' : undefined"
           >
             {{ item.label }}

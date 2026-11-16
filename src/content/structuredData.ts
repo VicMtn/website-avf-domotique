@@ -14,7 +14,6 @@ export const localBusiness = {
   description: site.description,
   url: site.url,
   email: site.email,
-  telephone: filled(site.phone.display) && site.phone.href.replace("tel:", ""),
   image: `${site.url}/og-image.jpg`,
   address: {
     "@type": "PostalAddress",

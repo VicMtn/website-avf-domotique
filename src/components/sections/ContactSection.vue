@@ -3,10 +3,8 @@ import ContactForm from "@/components/contact/ContactForm.vue";
 import { site } from "@/content/site";
 
 const coords = [
-  { label: "Téléphone", value: site.phone.display, href: site.phone.href },
   { label: "E-mail", value: site.email, href: `mailto:${site.email}` },
   { label: "Adresse", value: `${site.address.zip} ${site.address.city} (${site.address.canton})` },
-  { label: "Zone d'intervention", value: site.area },
 ];
 </script>
 

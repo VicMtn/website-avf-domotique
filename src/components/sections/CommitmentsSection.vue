@@ -24,7 +24,7 @@ import { commitments } from "@/content/commitments";
             sizes="(min-width: 1024px) 36rem, 100vw"
             img-class="absolute inset-0 h-full w-full object-cover"
           />
-          <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+          <div class="absolute inset-0 bg-linear-to-t from-neutral/80 via-neutral/10 to-transparent" />
           <div class="absolute inset-x-0 bottom-0 p-8 text-white">
             <h3 class="text-2xl">La technique s'efface.</h3>
             <p class="mt-2 max-w-md text-white/85">

@@ -12,7 +12,6 @@ export const site = {
   description:
     "AVF Domotique, Etoy (VD). Installation de domotique Loxone pour villas, appartements, commerces, hôtellerie et bureaux, en Vaud, Valais et Genève.",
 
-  phone: { display: "[+41 00 000 00 00]", href: "tel:+41000000000" },
   email: "info@avf-domotique.ch",
   address: {
     street: "[Rue et numéro]",

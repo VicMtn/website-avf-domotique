@@ -39,7 +39,7 @@ usePageMeta({
         durée limitée et ne servent pas à vous identifier.
       </p>
       <h3>Lorsque vous nous contactez</h3>
-      <p>Via le formulaire, par e-mail ou par téléphone, nous recevons les données que vous nous transmettez :</p>
+      <p>Via le formulaire ou par e-mail, nous recevons les données que vous nous transmettez :</p>
       <ul>
         <li>nom et prénom, entreprise le cas échéant ;</li>
         <li>adresse e-mail et numéro de téléphone ;</li>
@@ -70,8 +70,7 @@ usePageMeta({
       </p>
       <p>
         Si vous préférez que vos données restent en Suisse, écrivez-nous directement à
-        <a :href="`mailto:${site.email}`">{{ site.email }}</a> ou appelez-nous au
-        <a :href="site.phone.href">{{ site.phone.display }}</a
+        <a :href="`mailto:${site.email}`">{{ site.email }}</a
         >.
       </p>
 

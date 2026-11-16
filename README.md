@@ -16,6 +16,10 @@ npm run lint       # ESLint (Vue + TypeScript)
 npm run format     # Prettier, tri des classes Tailwind compris
 ```
 
+## Charte graphique
+
+Palette, règles d'usage et contrastes : voir [`CHARTE.md`](CHARTE.md).
+
 ## Structure
 
 - `src/content/` : textes et données (coordonnées, navigation…). **Les valeurs entre crochets sont à compléter.**

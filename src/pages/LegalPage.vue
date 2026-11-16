@@ -25,8 +25,6 @@ usePageMeta({
         Associés gérants : {{ site.legal.managers }}
       </p>
       <p>
-        Téléphone : <a :href="site.phone.href">{{ site.phone.display }}</a
-        ><br />
         E-mail : <a :href="`mailto:${site.email}`">{{ site.email }}</a>
       </p>
 

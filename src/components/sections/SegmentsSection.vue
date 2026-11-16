@@ -41,7 +41,7 @@ const active = computed(() => segments.find((s) => s.id === activeId.value) ?? s
             sizes="(min-width: 1024px) 17rem, 50vw"
             img-class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
-          <span class="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+          <span class="absolute inset-0 bg-linear-to-t from-neutral/80 via-neutral/10 to-transparent" />
           <span
             class="absolute inset-0 rounded-box transition ring-inset"
             :class="s.id === activeId ? 'ring-2 ring-base-100' : 'ring-0'"

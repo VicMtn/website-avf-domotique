@@ -27,9 +27,6 @@ const year = new Date().getFullYear();
         <p class="font-semibold">Contact</p>
         <ul class="mt-3 space-y-2 text-text">
           <li>
-            <a :href="site.phone.href" class="nav-link">{{ site.phone.display }}</a>
-          </li>
-          <li>
             <a :href="`mailto:${site.email}`" class="nav-link">{{ site.email }}</a>
           </li>
           <li>{{ site.address.zip }} {{ site.address.city }} ({{ site.address.canton }})</li>

@@ -92,8 +92,8 @@ const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allum
         :x2="g.x2"
         :y2="g.y2"
       >
-        <stop offset="0%" stop-color="#f5c542" stop-opacity=".42" />
-        <stop offset="100%" stop-color="#f5c542" stop-opacity="0" />
+        <stop offset="0%" stop-color="var(--color-glow)" stop-opacity=".34" />
+        <stop offset="100%" stop-color="var(--color-glow)" stop-opacity="0" />
       </linearGradient>
       <!-- Lamelles : perpendiculaires à la fenêtre -->
       <pattern id="avf-slats-h" width="6" height="420" patternUnits="userSpaceOnUse">
@@ -208,7 +208,7 @@ const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allum
   opacity: 1;
 }
 .bulb {
-  fill: #fff;
+  fill: var(--color-base-100);
   stroke: var(--ink);
   stroke-width: 1.5;
   transition: fill 0.4s;
@@ -230,7 +230,7 @@ const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allum
 }
 
 .window {
-  fill: #cfe3ee;
+  fill: var(--color-base-300);
 }
 .window-frame {
   fill: none;
@@ -251,7 +251,7 @@ const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allum
   transform: scaleY(var(--blind, 0));
 }
 .slat-bg {
-  fill: #8e8e93;
+  fill: var(--color-slate);
 }
 .slat-line {
   fill: var(--ink);
