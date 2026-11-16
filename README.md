@@ -47,13 +47,11 @@ Palette, règles d'usage et contrastes : voir [`CHARTE.md`](CHARTE.md).
    npm ci && npm run lint && npm test && npm run build
    npm run preview   # contrôle local de dist/
    ```
-3. Envoyer **le contenu** de `dist/` (fichier caché `.htaccess` compris) dans le dossier racine :
-   - **SSH / rsync** (recommandé) : essai à blanc avec `-n`, puis envoi réel ; `--delete` retire les anciens fichiers.
-     ```bash
-     rsync -avzn --delete dist/ UTILISATEUR@HOTE:/sites/avf-domotique.ch/
-     rsync -avz  --delete dist/ UTILISATEUR@HOTE:/sites/avf-domotique.ch/
-     ```
-   - **SFTP** (FileZilla…) : afficher les fichiers cachés, supprimer l'ancien contenu, puis déposer celui de `dist/`.
+3. Envoyer **le contenu** de `dist/` (pas le dossier lui-même) dans le dossier racine du site, via le **WebFTP** du Manager Infomaniak :
+   - activer l'affichage des fichiers cachés, pour voir et remplacer `.htaccess` ;
+   - supprimer l'ancien contenu du dossier racine (les fichiers de `assets/` changent de nom à chaque build) ;
+   - déposer le contenu de `dist/` en conservant l'arborescence : `index.html`, `.htaccess`, `404/`, `assets/`, `confidentialite/`, `mentions-legales/`, `favicon.svg`, `og-image.jpg`, `robots.txt`, `sitemap.xml`.
+   - Plus rapide si le WebFTP sait extraire une archive : créer le zip **depuis l'intérieur** de `dist/` (`cd dist && zip -r ../site.zip . && cd ..`), le déposer à la racine, l'extraire, puis supprimer `site.zip`.
 
 ### Vérifications après mise en ligne
 
