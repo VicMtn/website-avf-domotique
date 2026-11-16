@@ -13,7 +13,7 @@ export const site = {
     "AVF Domotique, Etoy (VD). Installation de domotique Loxone pour villas, appartements, commerces, hôtellerie et bureaux, en Vaud, Valais et Genève.",
 
   phone: { display: "[+41 00 000 00 00]", href: "tel:+41000000000" },
-  email: "contact@avf-domotique.ch",
+  email: "info@avf-domotique.ch",
   address: {
     street: "[Rue et numéro]",
     zip: "1163",
@@ -29,8 +29,8 @@ export const site = {
     uid: "[CHE-000.000.000]",
     register: "Registre du commerce du canton de Vaud",
     managers: "[Prénom Nom, Prénom Nom, Prénom Nom]",
-    host: "[Nom de l'hébergeur, adresse]",
-    formService: "[Service d'envoi du formulaire]",
+    host: "Infomaniak Network SA, Rue Eugène-Marziano 25, 1227 Les Acacias (GE), Suisse",
+    formService: "Web3Forms (web3forms.com), édité par Web3Creative, Kerala, Inde ; serveurs aux États-Unis",
   },
 } as const;
 

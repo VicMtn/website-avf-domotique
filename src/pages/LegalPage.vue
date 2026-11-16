@@ -47,8 +47,8 @@ usePageMeta({
 
       <h2>Responsabilité</h2>
       <p>
-        Les informations publiées sur ce site sont fournies à titre indicatif. Les estimations d'économies d'énergie
-        sont des ordres de grandeur : seule une étude sur place permet un chiffrage précis.
+        Les informations publiées sur ce site sont fournies à titre indicatif et ne constituent pas une offre. Les
+        fonctions, le matériel et le prix d'une installation sont précisés dans une offre écrite, établie après visite.
         {{ site.legalName }} décline toute responsabilité quant au contenu des sites externes vers lesquels ce site
         renvoie.
       </p>

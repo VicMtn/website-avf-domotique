@@ -4,7 +4,7 @@ import { team } from "@/content/team";
 </script>
 
 <template>
-  <section id="equipe" class="py-24 lg:py-32" aria-labelledby="equipe-title">
+  <section id="equipe" class="bg-base-200 py-24 lg:py-32" aria-labelledby="equipe-title">
     <div class="wrap">
       <SectionHeader
         id="equipe-title"
@@ -13,7 +13,7 @@ import { team } from "@/content/team";
         lead="Vous parlez directement à ceux qui viennent chez vous : pas de sous-traitance, pas de centre d'appel."
       />
       <div class="grid gap-4 md:grid-cols-3">
-        <article v-for="(m, i) in team" :key="m.name" v-reveal="i * 100" class="rounded-box border border-base-300 p-7">
+        <article v-for="(m, i) in team" :key="m.name" v-reveal="i * 100" class="rounded-box bg-base-100 p-7">
           <img
             v-if="m.photo"
             :src="m.photo"

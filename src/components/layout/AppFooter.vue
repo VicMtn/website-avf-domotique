@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
 </script>
 
 <template>
-  <footer class="border-t border-base-300 bg-base-200">
+  <footer class="border-t border-base-300 bg-base-100">
     <div class="wrap grid gap-10 py-14 text-sm sm:grid-cols-2 lg:grid-cols-4">
       <div class="lg:col-span-2">
         <AppLogo />

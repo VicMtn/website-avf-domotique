@@ -7,7 +7,7 @@ import { commitments } from "@/content/commitments";
 </script>
 
 <template>
-  <section class="py-24 lg:py-32" aria-labelledby="engagements-title">
+  <section class="bg-base-200 py-24 lg:py-32" aria-labelledby="engagements-title">
     <div class="wrap">
       <SectionHeader
         id="engagements-title"
@@ -38,15 +38,15 @@ import { commitments } from "@/content/commitments";
           v-for="(c, i) in commitments"
           :key="c.title"
           v-reveal="80 + i * 80"
-          class="rounded-box bg-base-200 p-7"
+          class="rounded-box bg-base-100 p-7"
         >
-          <span class="grid size-10 place-items-center rounded-full bg-base-100">
+          <span class="grid size-10 place-items-center rounded-full bg-base-200">
             <AppIcon :name="c.icon" :size="20" />
           </span>
           <h3 class="mt-5 text-lg">{{ c.title }}</h3>
           <p class="mt-2 text-sm text-text">{{ c.text }}</p>
           <ul v-if="c.tags" class="mt-4 flex flex-wrap gap-1.5">
-            <li v-for="t in c.tags" :key="t" class="badge border-base-300 bg-base-100 badge-sm">{{ t }}</li>
+            <li v-for="t in c.tags" :key="t" class="badge border-base-300 bg-base-200 badge-sm">{{ t }}</li>
           </ul>
         </article>
       </div>

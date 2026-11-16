@@ -56,9 +56,24 @@ usePageMeta({
       <h2>Destinataires</h2>
       <p>Vos données peuvent être traitées par les prestataires suivants, uniquement pour les besoins décrits ici :</p>
       <ul>
-        <li>hébergement du site et de la messagerie : {{ site.legal.host }} ;</li>
+        <li>hébergement du site : {{ site.legal.host }} ;</li>
         <li>transmission du formulaire de contact : {{ site.legal.formService }}.</li>
       </ul>
+
+      <h3>Transfert hors de Suisse</h3>
+      <p>
+        Le formulaire de contact transite par Web3Forms, dont les serveurs se trouvent aux États-Unis et l'éditeur en
+        Inde. Ce service ne conserve pas les demandes : il les transmet à notre adresse e-mail et efface ses journaux
+        techniques environ tous les deux mois. Ces pays n'offrent pas tous un niveau de protection reconnu comme adéquat
+        par le Conseil fédéral ; le transfert a lieu parce qu'il est nécessaire pour traiter la demande que vous nous
+        adressez (art. 17, al. 1, let. b nLPD).
+      </p>
+      <p>
+        Si vous préférez que vos données restent en Suisse, écrivez-nous directement à
+        <a :href="`mailto:${site.email}`">{{ site.email }}</a> ou appelez-nous au
+        <a :href="site.phone.href">{{ site.phone.display }}</a
+        >.
+      </p>
 
       <h2>Durée de conservation</h2>
       <p>

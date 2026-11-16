@@ -25,16 +25,10 @@ const errorMessage = ref("");
 const formEl = useTemplateRef<HTMLFormElement>("formEl");
 const doneEl = useTemplateRef<HTMLElement>("doneEl");
 
-// Pré-remplissage depuis les autres sections
+// Profil pré-sélectionné depuis « Pour qui »
 watch(
   () => contactDraft.profile,
   (p) => (form.profile = p),
-);
-watch(
-  () => contactDraft.context,
-  (ctx) => {
-    if (ctx && !form.message.includes(ctx)) form.message = form.message ? `${ctx}\n\n${form.message}` : ctx;
-  },
 );
 
 function validate(): boolean {
@@ -79,7 +73,6 @@ async function submit() {
 
 function reset() {
   Object.assign(form, { name: "", company: "", email: "", phone: "", message: "", website: "" });
-  contactDraft.context = "";
   status.value = "idle";
 }
 
@@ -91,7 +84,7 @@ const describedBy = (f: Field) => (errors[f] ? `err-${f}` : undefined);
 </script>
 
 <template>
-  <div class="rounded-box bg-base-200 p-6 sm:p-8">
+  <div class="rounded-box bg-base-100 p-6 sm:p-8">
     <div v-if="status === 'success'" ref="doneEl" tabindex="-1" role="status" class="outline-none">
       <h3 class="text-2xl">Merci, votre demande est transmise.</h3>
       <p class="mt-3 text-text">Nous vous recontactons sous deux jours ouvrables pour convenir d'une visite.</p>

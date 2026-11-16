@@ -18,7 +18,7 @@ const options = [
 </script>
 
 <template>
-  <section class="bg-base-200 py-24 lg:py-32" aria-labelledby="build-title">
+  <section class="py-24 lg:py-32" aria-labelledby="build-title">
     <div class="wrap">
       <p class="eyebrow">Neuf ou rénovation</p>
       <h2 id="build-title" class="mt-4 max-w-2xl text-3xl sm:text-4xl lg:text-[2.75rem]">
@@ -31,7 +31,7 @@ const options = [
           :key="o.title"
           v-reveal="i * 100"
           class="rounded-box p-8 sm:p-10"
-          :class="o.filled ? 'bg-base-100' : 'border border-line'"
+          :class="o.filled ? 'bg-base-200' : 'border border-line'"
         >
           <p class="text-sm font-medium text-muted">{{ o.tech }}</p>
           <h3 class="mt-2 text-2xl sm:text-3xl">{{ o.title }}</h3>

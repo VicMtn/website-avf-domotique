@@ -14,12 +14,7 @@ export const projectTypes = [
   "Maintenance",
 ] as const;
 
-/**
- * Brouillon partagé entre les sections : choisir un univers ou demander une estimation
- * pré-remplit le formulaire de contact.
- */
+/** Brouillon partagé : choisir un univers dans « Pour qui » pré-sélectionne le profil du formulaire */
 export const contactDraft = reactive({
   profile: "residence" as SegmentId | "autre",
-  /** Texte ajouté en tête du message (ex. réponses du calculateur) */
-  context: "",
 });

@@ -4,7 +4,7 @@ import { steps } from "@/content/process";
 </script>
 
 <template>
-  <section class="border-y border-base-300 bg-base-200 py-24 lg:py-32" aria-labelledby="process-title">
+  <section class="py-24 lg:py-32" aria-labelledby="process-title">
     <div class="wrap">
       <SectionHeader
         id="process-title"

@@ -11,7 +11,7 @@ const coords = [
 </script>
 
 <template>
-  <section id="contact" class="py-24 lg:py-32" aria-labelledby="contact-title">
+  <section id="contact" class="bg-base-200 py-24 lg:py-32" aria-labelledby="contact-title">
     <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-5">
         <p class="eyebrow">Contact</p>

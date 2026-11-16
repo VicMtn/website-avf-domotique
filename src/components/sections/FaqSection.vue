@@ -3,7 +3,7 @@ import { faq } from "@/content/faq";
 </script>
 
 <template>
-  <section id="faq" class="bg-base-200 py-24 lg:py-32" aria-labelledby="faq-title">
+  <section id="faq" class="py-24 lg:py-32" aria-labelledby="faq-title">
     <div class="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-4">
         <p class="eyebrow">Questions fréquentes</p>

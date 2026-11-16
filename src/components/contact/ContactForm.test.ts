@@ -21,7 +21,6 @@ async function fill(w: ReturnType<typeof factory>) {
 describe("ContactForm", () => {
   beforeEach(() => {
     send.mockReset();
-    contactDraft.context = "";
     contactDraft.profile = "residence";
   });
 
@@ -64,15 +63,13 @@ describe("ContactForm", () => {
     await flushPromises();
     const alert = w.find("[role=alert]");
     expect(alert.text()).toContain("(500)");
-    expect(alert.find("a").attributes("href")).toMatch(/^mailto:contact@avf-domotique\.ch/);
+    expect(alert.find("a").attributes("href")).toMatch(/^mailto:info@avf-domotique\.ch/);
   });
 
-  it("reprend le profil et le contexte venant des autres sections", async () => {
+  it("reprend le profil choisi dans « Pour qui »", async () => {
     const w = factory();
     contactDraft.profile = "commerce";
-    contactDraft.context = "Estimation en ligne (CHF 1’080 par an).";
     await flushPromises();
     expect((w.find("select[name=profile]").element as HTMLSelectElement).value).toBe("commerce");
-    expect((w.find("textarea[name=message]").element as HTMLTextAreaElement).value).toContain("CHF 1’080");
   });
 });
