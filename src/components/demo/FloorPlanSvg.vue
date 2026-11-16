@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { formatTemp, type FloorPlan, type Room } from "@/content/demo";
 
 const props = defineProps<{
@@ -8,11 +9,61 @@ const props = defineProps<{
   blinds: number;
   temps: Record<string, number>;
   alarm: boolean;
+  /** Lumière du jour : tache de soleil devant les fenêtres, réduite par les stores */
+  daylight: boolean;
 }>();
 
 const emit = defineEmits<{ toggle: [roomId: string] }>();
 
 const isOn = (room: Room) => props.lights.has(room.id);
+/** Dégradés de la tache de soleil, du bord de la fenêtre vers l'intérieur */
+const SUN_GRADIENTS = [
+  { id: "down", x1: 0, y1: 0, x2: 0, y2: 1 },
+  { id: "up", x1: 0, y1: 1, x2: 0, y2: 0 },
+  { id: "right", x1: 0, y1: 0, x2: 1, y2: 0 },
+  { id: "left", x1: 1, y1: 0, x2: 0, y2: 0 },
+] as const;
+
+/** Profondeur et évasement de la tache de soleil */
+const SUN_DEPTH = 90;
+const SUN_SPREAD = 18;
+
+/**
+ * Fenêtres enrichies : sens du store (le long de la fenêtre) et tache de soleil
+ * projetée vers l'intérieur, déduite de la position sur le plan (viewBox 600×420).
+ */
+const windows = computed(() =>
+  props.plan.windows.map((w) => {
+    const horizontal = w.w >= w.h;
+    const D = SUN_DEPTH;
+    const s = SUN_SPREAD;
+    let dir: "down" | "up" | "right" | "left";
+    let pts: number[][];
+    if (horizontal) {
+      dir = w.y < 210 ? "down" : "up";
+      const y0 = dir === "down" ? w.y + w.h : w.y;
+      const y1 = dir === "down" ? y0 + D : y0 - D;
+      pts = [
+        [w.x, y0],
+        [w.x + w.w, y0],
+        [w.x + w.w + s, y1],
+        [w.x - s, y1],
+      ];
+    } else {
+      dir = w.x < 300 ? "right" : "left";
+      const x0 = dir === "right" ? w.x + w.w : w.x;
+      const x1 = dir === "right" ? x0 + D : x0 - D;
+      pts = [
+        [x0, w.y],
+        [x0, w.y + w.h],
+        [x1, w.y + w.h + s],
+        [x1, w.y - s],
+      ];
+    }
+    return { ...w, horizontal, dir, sun: pts.map((p) => p.join(",")).join(" ") };
+  }),
+);
+
 const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allumée" : "éteinte"}. Appuyer pour changer.`;
 </script>
 
@@ -22,7 +73,7 @@ const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allum
     viewBox="0 0 600 420"
     role="group"
     :aria-label="plan.description"
-    :style="{ '--blind': blinds }"
+    :style="{ '--blind': blinds, '--sun': daylight ? 1 - blinds : 0 }"
     :data-alarm="alarm ? 'on' : 'off'"
   >
     <defs>
@@ -31,7 +82,33 @@ const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allum
         <stop offset="60%" stop-color="var(--color-glow)" stop-opacity=".18" />
         <stop offset="100%" stop-color="var(--color-glow)" stop-opacity="0" />
       </radialGradient>
+      <!-- Lumière du jour, dégradé vers l'intérieur de la pièce -->
+      <linearGradient
+        v-for="g in SUN_GRADIENTS"
+        :id="`avf-sun-${g.id}`"
+        :key="g.id"
+        :x1="g.x1"
+        :y1="g.y1"
+        :x2="g.x2"
+        :y2="g.y2"
+      >
+        <stop offset="0%" stop-color="#f5c542" stop-opacity=".42" />
+        <stop offset="100%" stop-color="#f5c542" stop-opacity="0" />
+      </linearGradient>
+      <!-- Lamelles : perpendiculaires à la fenêtre -->
+      <pattern id="avf-slats-h" width="6" height="420" patternUnits="userSpaceOnUse">
+        <rect width="6" height="420" class="slat-bg" />
+        <rect x="5" width="1" height="420" class="slat-line" />
+      </pattern>
+      <pattern id="avf-slats-v" width="600" height="6" patternUnits="userSpaceOnUse">
+        <rect width="600" height="6" class="slat-bg" />
+        <rect y="5" width="600" height="1" class="slat-line" />
+      </pattern>
     </defs>
+
+    <g pointer-events="none">
+      <polygon v-for="(w, i) in windows" :key="i" class="sun" :points="w.sun" :fill="`url(#avf-sun-${w.dir})`" />
+    </g>
 
     <g
       v-for="room in plan.rooms"
@@ -57,9 +134,18 @@ const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allum
     </g>
 
     <g pointer-events="none">
-      <template v-for="(w, i) in plan.windows" :key="i">
+      <template v-for="(w, i) in windows" :key="i">
         <rect class="window" :x="w.x" :y="w.y" :width="w.w" :height="w.h" />
-        <rect class="blind" :x="w.x" :y="w.y" :width="w.w" :height="w.h" />
+        <rect
+          class="blind"
+          :class="w.horizontal ? 'blind-h' : 'blind-v'"
+          :x="w.x"
+          :y="w.y"
+          :width="w.w"
+          :height="w.h"
+          :fill="`url(#avf-slats-${w.horizontal ? 'h' : 'v'})`"
+        />
+        <rect class="window-frame" :x="w.x" :y="w.y" :width="w.w" :height="w.h" />
       </template>
     </g>
 
@@ -144,17 +230,36 @@ const roomLabel = (room: Room) => `${room.name} : lumière ${isOn(room) ? "allum
 }
 
 .window {
-  fill: #d9e5ec;
+  fill: #cfe3ee;
+}
+.window-frame {
+  fill: none;
   stroke: var(--ink);
   stroke-width: 1.5;
 }
-/* La lame descend de 0 à 100 % sur la fenêtre */
+/* Le store se déploie sur toute la longueur de la fenêtre, lamelles comprises */
 .blind {
-  fill: var(--color-muted);
   transform-box: fill-box;
+  transition: transform 1.4s cubic-bezier(0.6, 0.05, 0.3, 1);
+}
+.blind-h {
+  transform-origin: left;
+  transform: scaleX(var(--blind, 0));
+}
+.blind-v {
   transform-origin: top;
   transform: scaleY(var(--blind, 0));
-  transition: transform 1.2s cubic-bezier(0.6, 0.05, 0.3, 1);
+}
+.slat-bg {
+  fill: #8e8e93;
+}
+.slat-line {
+  fill: var(--ink);
+  opacity: 0.45;
+}
+.sun {
+  opacity: var(--sun, 0);
+  transition: opacity 1.4s ease;
 }
 
 .alarm-ring {

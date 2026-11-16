@@ -108,6 +108,22 @@
     line-height: 1.5;
   }
 
+  /* Liens de navigation : trait qui se dessine au survol (et sur la section active) */
+  .nav-link {
+    @apply text-text;
+    padding-bottom: 2px;
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition:
+      background-size 0.3s ease,
+      color 0.2s ease;
+  }
+  .nav-link:hover,
+  .nav-link:focus-visible,
+  .nav-link[aria-current="true"] {
+    @apply text-base-content;
+    background-size: 100% 1px;
+  }
+
   /* Apparition au défilement (directive v-reveal) */
   .reveal {
     opacity: 0;

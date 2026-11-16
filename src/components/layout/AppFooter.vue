@@ -19,7 +19,7 @@ const year = new Date().getFullYear();
         <p class="font-semibold">Navigation</p>
         <ul class="mt-3 space-y-2 text-text">
           <li v-for="item in nav" :key="item.to">
-            <RouterLink :to="item.to" class="hover:text-base-content">{{ item.label }}</RouterLink>
+            <RouterLink :to="item.to" class="nav-link">{{ item.label }}</RouterLink>
           </li>
         </ul>
       </div>
@@ -27,10 +27,10 @@ const year = new Date().getFullYear();
         <p class="font-semibold">Contact</p>
         <ul class="mt-3 space-y-2 text-text">
           <li>
-            <a :href="site.phone.href" class="hover:text-base-content">{{ site.phone.display }}</a>
+            <a :href="site.phone.href" class="nav-link">{{ site.phone.display }}</a>
           </li>
           <li>
-            <a :href="`mailto:${site.email}`" class="hover:text-base-content">{{ site.email }}</a>
+            <a :href="`mailto:${site.email}`" class="nav-link">{{ site.email }}</a>
           </li>
           <li>{{ site.address.zip }} {{ site.address.city }} ({{ site.address.canton }})</li>
           <li>Intervention : {{ site.area }}</li>
@@ -41,8 +41,8 @@ const year = new Date().getFullYear();
       <div class="wrap flex flex-col gap-3 py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>© {{ year }} {{ site.legalName }} · Loxone est une marque de Loxone Electronics GmbH.</p>
         <ul class="flex gap-5">
-          <li><RouterLink to="/mentions-legales" class="hover:text-base-content">Mentions légales</RouterLink></li>
-          <li><RouterLink to="/confidentialite" class="hover:text-base-content">Confidentialité</RouterLink></li>
+          <li><RouterLink to="/mentions-legales" class="nav-link">Mentions légales</RouterLink></li>
+          <li><RouterLink to="/confidentialite" class="nav-link">Confidentialité</RouterLink></li>
         </ul>
       </div>
     </div>

@@ -31,6 +31,8 @@ export interface Scene {
   lights: string[];
   /** 0 = stores ouverts, 1 = fermés */
   blinds: number;
+  /** Soleil dehors : la lumière du jour entre par les fenêtres non ombragées */
+  daylight: boolean;
   temps: Record<string, number>;
   alarm: boolean;
   story: string;
@@ -123,6 +125,7 @@ export const plans: FloorPlan[] = [
         label: "Matin",
         lights: ["cuisine", "sdb"],
         blinds: 0,
+        daylight: true,
         temps: { sejour: 21, cuisine: 20, chambre: 19, sdb: 23 },
         alarm: false,
         story: "6 h 45 : la salle de bain est déjà chaude, les stores s'ouvrent et la cuisine s'éclaire doucement.",
@@ -132,6 +135,7 @@ export const plans: FloorPlan[] = [
         label: "Je pars",
         lights: [],
         blinds: 0.6,
+        daylight: true,
         temps: { sejour: 17, cuisine: 17, chambre: 17, sdb: 17 },
         alarm: true,
         story:
@@ -142,6 +146,7 @@ export const plans: FloorPlan[] = [
         label: "Soirée",
         lights: ["sejour", "cuisine", "entree"],
         blinds: 1,
+        daylight: false,
         temps: { sejour: 21.5, cuisine: 21, chambre: 19, sdb: 22 },
         alarm: false,
         story: "À la tombée du jour, les stores descendent et le séjour passe en lumière chaude.",
@@ -151,6 +156,7 @@ export const plans: FloorPlan[] = [
         label: "Nuit",
         lights: [],
         blinds: 1,
+        daylight: false,
         temps: { sejour: 18, cuisine: 17, chambre: 18, sdb: 19 },
         alarm: true,
         story:
@@ -234,6 +240,7 @@ export const plans: FloorPlan[] = [
         label: "Ouverture",
         lights: ["vente", "vitrine", "bureau"],
         blinds: 0,
+        daylight: true,
         temps: { vente: 20, reserve: 16, bureau: 21 },
         alarm: false,
         story:
@@ -244,6 +251,7 @@ export const plans: FloorPlan[] = [
         label: "Journée",
         lights: ["vente", "vitrine"],
         blinds: 0.5,
+        daylight: true,
         temps: { vente: 20, reserve: 16, bureau: 21 },
         alarm: false,
         story:
@@ -254,6 +262,7 @@ export const plans: FloorPlan[] = [
         label: "Fermeture",
         lights: ["vitrine"],
         blinds: 0,
+        daylight: false,
         temps: { vente: 16, reserve: 15, bureau: 16 },
         alarm: true,
         story: "19 h : un badge en sortant. Tout s'éteint sauf la vitrine, allumée jusqu'à 22 h, et l'alarme s'arme.",
@@ -263,6 +272,7 @@ export const plans: FloorPlan[] = [
         label: "Nuit",
         lights: [],
         blinds: 1,
+        daylight: false,
         temps: { vente: 15, reserve: 14, bureau: 15 },
         alarm: true,
         story:

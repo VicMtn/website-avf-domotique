@@ -11,6 +11,7 @@ const plan = computed(() => plans.find((p) => p.id === planId.value) ?? plans[0]
 const sceneId = ref<string | null>(null);
 const lights = ref<Set<string>>(new Set());
 const blinds = ref(0);
+const daylight = ref(false);
 const temps = ref<Record<string, number>>({});
 const alarm = ref(false);
 const story = ref("");
@@ -19,6 +20,7 @@ function applyScene(scene: Scene) {
   sceneId.value = scene.id;
   lights.value = new Set(scene.lights);
   blinds.value = scene.blinds;
+  daylight.value = scene.daylight;
   temps.value = { ...scene.temps };
   alarm.value = scene.alarm;
   story.value = scene.story;
@@ -51,7 +53,11 @@ const status = computed(() => {
       label: "Lumières",
       value: n === 0 ? "Toutes éteintes" : `${n} pièce${n > 1 ? "s" : ""} allumée${n > 1 ? "s" : ""}`,
     },
-    { label: "Stores", value: blinds.value === 0 ? "Ouverts" : blinds.value === 1 ? "Fermés" : "Ombrage" },
+    {
+      label: "Stores",
+      value:
+        blinds.value === 0 ? "Ouverts" : blinds.value === 1 ? "Fermés" : `Fermés à ${Math.round(blinds.value * 100)} %`,
+    },
     { label: "Chauffage", value: `${heatRoom?.name ?? ""} ${formatTemp(temps.value[plan.value.heatRoom] ?? 20)}` },
     { label: "Alarme", value: alarm.value ? "Armée" : "Désarmée" },
   ];
@@ -76,6 +82,7 @@ const status = computed(() => {
             :blinds="blinds"
             :temps="temps"
             :alarm="alarm"
+            :daylight="daylight"
             @toggle="toggleRoom"
           />
         </div>

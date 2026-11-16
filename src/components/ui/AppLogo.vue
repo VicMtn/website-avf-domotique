@@ -5,7 +5,7 @@ import { site } from "@/content/site";
 <template>
   <RouterLink
     to="/"
-    class="inline-flex items-center gap-2.5 text-[15px] font-semibold text-base-content"
+    class="inline-flex items-center gap-2.5 text-[15px] font-semibold text-base-content transition-opacity hover:opacity-70"
     :aria-label="`${site.name}, accueil`"
   >
     <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">

@@ -39,18 +39,8 @@ const isActive = (to: string) => active.value !== null && to.endsWith(`#${active
 
       <ul class="hidden items-center gap-8 md:flex">
         <li v-for="item in nav" :key="item.to">
-          <RouterLink
-            :to="item.to"
-            class="relative py-1 text-sm transition-colors hover:text-base-content"
-            :class="isActive(item.to) ? 'text-base-content' : 'text-text'"
-            :aria-current="isActive(item.to) ? 'true' : undefined"
-          >
+          <RouterLink :to="item.to" class="nav-link text-sm" :aria-current="isActive(item.to) ? 'true' : undefined">
             {{ item.label }}
-            <span
-              class="absolute inset-x-0 -bottom-0.5 h-px origin-left bg-base-content transition-transform duration-300"
-              :class="isActive(item.to) ? 'scale-x-100' : 'scale-x-0'"
-              aria-hidden="true"
-            />
           </RouterLink>
         </li>
       </ul>
@@ -85,7 +75,13 @@ const isActive = (to: string) => active.value !== null && to.endsWith(`#${active
     <div v-show="open" id="menu-mobile" class="border-t border-base-300 md:hidden">
       <ul class="wrap flex flex-col py-3">
         <li v-for="item in nav" :key="item.to">
-          <RouterLink :to="item.to" class="block py-3 text-lg">{{ item.label }}</RouterLink>
+          <RouterLink
+            :to="item.to"
+            class="-mx-3 block rounded-field px-3 py-3 text-lg transition-colors hover:bg-base-200"
+            :aria-current="isActive(item.to) ? 'true' : undefined"
+          >
+            {{ item.label }}
+          </RouterLink>
         </li>
         <li class="pt-3 pb-2">
           <RouterLink :to="cta.to" class="btn w-full btn-primary">{{ cta.label }}</RouterLink>
